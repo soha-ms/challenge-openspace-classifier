@@ -1,3 +1,5 @@
+import random
+
 
 class Seat:
 
@@ -29,6 +31,7 @@ class Table():
     def __init__(self, capacity):
         self.capacity =  capacity
         self.seats = []
+        self.teamLead = ""
         #create list of seats for eaxh table object
         for x in range(capacity):
             seat = Seat()        
@@ -51,6 +54,10 @@ class Table():
                 return True
         return False
 
+    def assign_team_lead(self) :  
+        #Choose random lead from assigned seats
+        num = random.randint(0,len(self.seats) -1)       
+        self.teamLead = self.seats[num].occupant
 
     def left_capacity(self):
         self.capacity -= 1
